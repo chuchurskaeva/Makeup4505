@@ -1,0 +1,70 @@
+<html>
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+    <script type="text/javascript">
+        function FahrenheitToCelsius(){
+            Fahrenheit=document.getElementById("valFromA").value
+            if (window.XMLHttpRequest){
+                xmlhttp=new XMLHttpRequest();
+            }else {
+                xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            xmlhttp.onreadystatechange=function(){
+                if (xmlhttp.readyState==4 && xmlhttp.status==200){
+                    document.getElementById("resulta").innerHTML=xmlhttp.responseText;
+                }	
+            }
+	        xmlhttp.open("POST","https://ip-uacs.herokuapp.com/api/Convert/ToCelsius/"+Fahrenheit,true);
+            xmlhttp.send();
+        }
+        function CelsiusToFahrenheit(){
+            Celsius=document.getElementById("valFromB").value
+            if (window.XMLHttpRequest){
+                xmlhttp=new XMLHttpRequest();
+            }else {
+                xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            xmlhttp.onreadystatechange=function(){
+                if (xmlhttp.readyState==4 && xmlhttp.status==200){
+                    document.getElementById("resultb").innerHTML=xmlhttp.responseText;
+                }	
+            }
+	        xmlhttp.open("POST","https://ip-uacs.herokuapp.com/api/Convert/ToFahrenheit/"+Celsius,true);
+            xmlhttp.send();
+        }
+        </script>
+</head>
+<body align=center>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <a class="navbar-brand" href="#">Eva Chuchurska 4505</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a class="nav-link" href="conv.html"> Conversion <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="studentsearch.html"> Search </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="add.html"> Add Student </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+
+
+        Fahrenheit here <input type="Text" name="valFromA" id="valFromA"> 
+        <div id="resulta" >&nbsp;</div>
+        <button type="button" onclick="FahrenheitToCelsius()">Calcucate</button>
+        <br>
+        Celsius here <input type="Text" name="valFromB" id="valFromB"> 
+        <div id="resultb" >&nbsp;</div>
+        <button type="button" onclick="CelsiusToFahrenheit()">Calcucate</button>
+
+</body>
+</html>
